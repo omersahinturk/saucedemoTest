@@ -60,6 +60,9 @@ public class ExtentManager {
         extentTest.info(msg);
     }
 
+    public void logWarning(String msg){
+        extentTest.warning(msg);
+    }
     public void logInfo(String msg, WebElement element){
         String str = element.toString();
         String locator = str.substring(str.indexOf("->"), str.length()-1);
