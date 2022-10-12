@@ -96,4 +96,11 @@ public class BasePage {
         BaseTest.extentManager.logScreenshot(driver);
     }
 
+    public void logInfo(String info){
+        BaseTest.extentManager.logInfo(info);
+    }
+
+    public void logWarning(String info){
+        BaseTest.extentManager.logWarning(info);
+    }
 }

@@ -70,15 +70,13 @@ public class SaucedemoTest extends BaseTest {
             description = "I need an option to see navigation menu. When user clicks the button it should display following buttons:")*/
 
     @Test(testName = "US 304 - test display options", description = "I need an option to see navigation menu. When user clicks the button it should display following buttons:")
-    public void test04(String navItem){
+    public void test04(){
         page.login();
         page.click(page.btnBurgerMenu);
         String[] menuList= new String[] {"All Items","About","Logout","Reset App State"};
         for(String item:menuList){
-            Assert.assertTrue(page.getMenuItem(navItem).size()>0);
-            page.takeScreenshot();
+            Assert.assertTrue(page.verifyLinkedMenu(item));
         }
-
         page.sleep(1000);
 
     }

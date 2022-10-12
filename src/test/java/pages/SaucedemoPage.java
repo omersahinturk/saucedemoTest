@@ -1,11 +1,13 @@
 package pages;
 
 import base.BasePage;
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.ExtentManager;
 
 import java.util.List;
 
@@ -39,8 +41,19 @@ public class SaucedemoPage extends BasePage {
         this.click(btnLogin);
     }
 
-    public List<WebElement> getMenuItem(String linkText){
-        return driver.findElements(By.xpath("//a[text()='" + linkText +"']"));
+    public boolean verifyLinkedMenu(String linkText){
+        String path = "//a[text()='" + linkText +"']";
+        List<WebElement> linksItems = driver.findElements(By.xpath(path));
+        if (linksItems.size() > 0) {
+            this.highlightElement(linksItems.get(0));
+            logInfo("Link text=" + linkText + ", xpath=" + path);
+            return true;
+        }
+        else {
+            logWarning("Can't find: " + path);
+        return false;
+        }
+
     }
 
 
