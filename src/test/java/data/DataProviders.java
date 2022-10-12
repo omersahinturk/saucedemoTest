@@ -6,8 +6,7 @@ public class DataProviders {
 
     @DataProvider(name = "nav buttons")
     public Object[] data(){
-        Object[] obj = new String[] {"data1","data2"};
-
+        Object[] obj = new String[] {"All Items","About","Logout","Reset App State"};
         return obj;
     }
 
