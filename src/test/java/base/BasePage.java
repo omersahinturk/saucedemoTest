@@ -56,6 +56,24 @@ public class BasePage {
         }
     }
 
+    public void highlightElementWithScreenshot(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        for (int i = 0; i < 2; i++) {
+            try {
+                if (i % 2 == 0) {
+                    js.executeScript("arguments[0].setAttribute('style', arguments[1]);", element, "color: black;" +
+                            "border: 3px solid red");
+                    BaseTest.extentManager.logScreenshot(driver);
+                } else {
+                    sleep(600);
+                    js.executeScript("arguments[0].setAttribute('style', arguments[1]);", element, "");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
     public void sendKeys(WebElement element, String inputText){
         BaseTest.extentManager.logInfo("Entered the text ", element);
         waitForElementVisibility(element);
@@ -64,6 +82,11 @@ public class BasePage {
         element.sendKeys(inputText);
     }
 
+    public void moveToViewAndHighlightAndScreenshot(WebElement element){
+        waitForElementVisibility(element);
+        moveIntoView(element);
+        highlightElementWithScreenshot(element);
+    }
     public String getText(WebElement element){
         BaseTest.extentManager.logInfo("Retrieved the text ", element);
         waitForElementVisibility(element);

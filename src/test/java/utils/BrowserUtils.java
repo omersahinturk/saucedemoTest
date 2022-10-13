@@ -15,7 +15,8 @@ public class BrowserUtils {
 
     public static String xPathTranslate(String HtmlTag,String HtmlAttb, String value){
         //td[translate(text(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz') = 'jhon@hotmail.com']
-        //xPathTranslate("td","text()","john@gmail.com")
+        //a[text()='Logout']
+        //xPathTranslate("a","text()","john@gmail.com")
         return  "//" +HtmlTag + "[translate(" + HtmlAttb + ",'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz') = '" + value.toLowerCase()+ "']";
 
     }
