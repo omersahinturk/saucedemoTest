@@ -56,5 +56,24 @@ public class SaucedemoPage extends BasePage {
 
     }
 
+    public boolean verifyIfWebElementIsDisplayed(WebElement element, String logString){
+        moveIntoView(element);
+        boolean result = element.isDisplayed();
+        logInfo(logString + result);
+        highlightElementWithScreenshot(element);
 
+        return  result;
+    }
+
+    @FindBy(xpath = "//li[@class='social_facebook']")
+    public WebElement facebook;
+
+    @FindBy(xpath = "//li[@class='social_linkedin']")
+    public WebElement linkedin;
+
+    @FindBy(xpath = "//select[@class='product_sort_container']")
+    public WebElement btnProductViewOption;
+
+    @FindBy(xpath = "//li[@class='social_twitter']")
+    public WebElement twitter;
 }
