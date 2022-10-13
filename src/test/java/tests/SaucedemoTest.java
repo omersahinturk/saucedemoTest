@@ -41,8 +41,6 @@ public class SaucedemoTest extends BaseTest {
         page.assertEquals(expectedText,err);
         page.takeScreenshot();
         page.sleep(1000);
-
-
     }
 
     @Test(testName = "US 303 - When problem_user logs in", description = "all items on homepage should display same images")
@@ -51,7 +49,6 @@ public class SaucedemoTest extends BaseTest {
         page.sendKeys(page.txtPassword,password);
         page.click(page.btnLogin);
         List<WebElement> imgList = page.imageList;
-
         //Retrieve the first image source which would be the same
         String expectedImg = imgList.get(0).getAttribute("src");
         for(WebElement element: imgList){
@@ -60,7 +57,6 @@ public class SaucedemoTest extends BaseTest {
         page.takeScreenshot();
         page.sleep(1000);
     }
-
 
     @Test(testName = "US 304 - test display options", description = "I need an option to see navigation menu. When user clicks the button it should display following buttons:")
     public void test04(){
