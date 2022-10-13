@@ -80,7 +80,4 @@ public class SaucedemoTest extends BaseTest {
         page.sleep(1000);
 
     }
-
-
-
 }
