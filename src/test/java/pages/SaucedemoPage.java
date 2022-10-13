@@ -35,6 +35,9 @@ public class SaucedemoPage extends BasePage {
     @FindBy(id = "react-burger-menu-btn")
     public WebElement btnBurgerMenu;
 
+    @FindBy(className = "footer_copy")
+    public WebElement footerTxt;
+
     public void login(){
         this.sendKeys(txtUsername,"standard_user");
         this.sendKeys(txtPassword,"secret_sauce");

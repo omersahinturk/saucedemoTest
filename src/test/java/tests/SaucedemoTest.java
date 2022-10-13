@@ -81,6 +81,18 @@ public class SaucedemoTest extends BaseTest {
 
     }
 
+    @Test(testName = "US 305 - Footer of the page should be \"© 2022 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy\"")
+    public void test05() {
+        page.login();
+        page.click(page.btnBurgerMenu);
+        String expected = "© 2022 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy";
+        String actual = page.getText(page.footerTxt);
+        page.assertEquals(actual, expected);
+
+        page.takeScreenshot();
+        page.sleep(1000);
+    }
+
 
 
 }
