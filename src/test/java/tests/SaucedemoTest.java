@@ -1,7 +1,5 @@
 package tests;
-
 import base.BaseTest;
-import data.DataProviders;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -9,12 +7,10 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.SaucedemoPage;
-import utils.ConfigReader;
-
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+
 public class SaucedemoTest extends BaseTest {
     SaucedemoPage page;
     public String password = "secret_sauce";
@@ -65,9 +61,6 @@ public class SaucedemoTest extends BaseTest {
         page.sleep(1000);
     }
 
-       /*  @Test(dataProvider = "nav buttons", dataProviderClass = DataProviders.class,
-            testName = "US 304 - test display options",
-            description = "I need an option to see navigation menu. When user clicks the button it should display following buttons:")*/
 
     @Test(testName = "US 304 - test display options", description = "I need an option to see navigation menu. When user clicks the button it should display following buttons:")
     public void test04(){

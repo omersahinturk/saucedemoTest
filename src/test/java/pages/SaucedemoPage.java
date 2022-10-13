@@ -1,15 +1,12 @@
 package pages;
 
 import base.BasePage;
-import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.BrowserUtils;
-import utils.ExtentManager;
-
 import java.util.List;
 
 
@@ -47,9 +44,6 @@ public class SaucedemoPage extends BasePage {
 
     @FindBy(xpath = "//li[@class='social_linkedin']")
     public WebElement linkedin;
-
-  /*  @FindBy(xpath = "//select[@class='product_sort_container']/option")
-    public List<WebElement> btnProductViewOptions;*/
 
     @FindBy(xpath = "//select[@class='product_sort_container']")
     public WebElement btnProductViewOption;
