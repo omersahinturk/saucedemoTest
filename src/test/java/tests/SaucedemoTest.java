@@ -80,4 +80,13 @@ public class SaucedemoTest extends BaseTest {
         page.sleep(1000);
 
     }
+    @Test(testName = "US 307 - Social media buttons",description = "Verify there are 3 social media buttons are present: twitter, facebook and linkedIn")
+    public void test07(){
+        page.login();
+        Assert.assertTrue(page.verifyIfWebElementIsDisplayed(page.twitter,"Verify twitter button displayed :"));
+        Assert.assertTrue(page.verifyIfWebElementIsDisplayed(page.facebook,"Verify facebook button displayed :"));
+        Assert.assertTrue(page.verifyIfWebElementIsDisplayed(page.linkedin,"Verify linkedin button displayed :"));
+        page.sleep(1000);
+    }
+
 }
