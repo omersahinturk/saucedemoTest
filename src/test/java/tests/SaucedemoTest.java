@@ -4,12 +4,15 @@ import base.BaseTest;
 import data.DataProviders;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.SaucedemoPage;
 import utils.ConfigReader;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class SaucedemoTest extends BaseTest {
@@ -80,6 +83,97 @@ public class SaucedemoTest extends BaseTest {
         page.sleep(1000);
 
     }
+
+    @Test(testName = "US 306 - Filter options",
+            description = "When user clicks the filter it should have following options: " +
+                    "Name (A to Z), Name (Z to A), Price (low to high), Price (high to low)")
+    public void test06(){
+        page.login();
+        page.click(page.btnProductViewOption);
+
+        Select select = new Select(page.selectViewSortOption);
+
+        //---------------------------------------------------------------------
+        page.logInfo("<h2>Verify product sorted by Name (A to Z)</h2>");
+        select.selectByVisibleText("Name (A to Z)");
+        page.sleep(3000);
+        page.takeScreenshot();
+        List<WebElement> productItems = page.productItems;
+        List<String> productItemSortedByName = new ArrayList<String>();
+
+        //Add data to array
+        productItems.forEach(e-> productItemSortedByName.add(e.getText()));
+        Collections.sort(productItemSortedByName);//Ascending order
+        System.out.println(productItemSortedByName);
+
+        int i =0;
+        for(WebElement each: page.productItems)
+        {
+            page.assertEquals(each.getText(),productItemSortedByName.get(i));
+            i++;
+        }
+
+        //---------------------------------------------------------------------
+        page.logInfo("<h3>Verify product sorted by Name (Z to A)</h3>");
+        page.click(page.btnProductViewOption);
+        select.selectByVisibleText("Name (Z to A)");
+        page.sleep(1000);
+        page.takeScreenshot();
+        Collections.sort(productItemSortedByName,Collections.reverseOrder());//Reverse Array to Desc order
+        // productItemSorted.forEach(e-> System.out.println(e));
+        System.out.println(productItemSortedByName);
+        i=0;
+        for(WebElement each:page.productItems)
+        {
+            page.assertEquals(each.getText(),productItemSortedByName.get(i));
+            i++;
+        }
+        //---------------------------------------------------------------------
+        page.logInfo("<h3>Verify product sorted by Price (low to high)</h3>");
+        page.click(page.btnProductViewOption);
+        select.selectByVisibleText("Price (low to high)");
+        page.sleep(1000);
+        page.takeScreenshot();
+        //Get the price list
+        List<WebElement> prices = page.productPrices;
+
+        //Create a nw arrayList for products sorted by price  ASC
+        List<Double> productPrices = new ArrayList<Double>();
+        //Add product item to array in order to sort
+        prices.forEach(e-> productPrices.add(Double.parseDouble(e.getText().replace("$","").replace(" ",""))));
+
+        Collections.sort(productPrices);//Sort product by Price ASC
+        System.out.println(productPrices);
+        //Verify if they are match
+        i=0;
+
+        for(WebElement each:page.productPrices)
+        {
+            page.assertEquals(each.getText(),"$" + productPrices.get(i).toString());
+            i++;
+        }
+
+        //Price (high to low)
+//---------------------------------------------------------------------
+        page.logInfo("<h3>Verify product sorted by Price (high to low)</h3>");
+        page.click(page.btnProductViewOption);
+        select.selectByVisibleText("Price (high to low)");
+        page.sleep(1000);
+        page.takeScreenshot();
+        //Add product item to array in order to sort
+        //prices.forEach(e-> productPrices.add(Double.parseDouble(e.getText().replace("$","").replace(" ",""))));
+
+        Collections.sort(productPrices,Collections.reverseOrder());//Sort product by Price ASC
+        System.out.println(productPrices);
+        //Verify if they are match
+        i=0;
+        for(WebElement each:page.productPrices)
+        {
+            page.assertEquals(each.getText(),"$" + productPrices.get(i).toString());
+            i++;
+        }
+    }
+
     @Test(testName = "US 307 - Social media buttons",description = "Verify there are 3 social media buttons are present: twitter, facebook and linkedIn")
     public void test07(){
         page.login();
