@@ -7,6 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.BrowserUtils;
+<<<<<<< HEAD
+=======
+import utils.ExtentManager;
+
+>>>>>>> master
 import java.util.List;
 
 
@@ -85,11 +90,17 @@ public class SaucedemoPage extends BasePage {
         }
         else {
             logWarning("Can't find: " + path);
-        return false;
+            return false;
         }
-
     }
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> master
 }
+
+
+
+

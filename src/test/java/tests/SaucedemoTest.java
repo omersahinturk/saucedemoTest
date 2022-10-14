@@ -7,6 +7,13 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.SaucedemoPage;
+<<<<<<< HEAD
+=======
+import utils.ConfigReader;
+
+import java.util.ArrayList;
+import java.util.Collections;
+>>>>>>> master
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -70,6 +77,7 @@ public class SaucedemoTest extends BaseTest {
 
     }
 
+<<<<<<< HEAD
     @Test(testName = "US 305 - Verify footer",description = "Footer of the page should be “© 2022 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy”")
     public void test05(){
         String expectedText = "© 2022 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy";
@@ -81,6 +89,8 @@ public class SaucedemoTest extends BaseTest {
     }
    /* US 306 - Filter options. When user clicks the filter it should have following options:
     Name (A to Z), Name (Z to A), Price (low to high), Price (high to low)*/
+=======
+>>>>>>> master
     @Test(testName = "US 306 - Filter options",
             description = "When user clicks the filter it should have following options: " +
                     "Name (A to Z), Name (Z to A), Price (low to high), Price (high to low)")
@@ -117,7 +127,11 @@ public class SaucedemoTest extends BaseTest {
         page.sleep(1000);
         page.takeScreenshot();
         Collections.sort(productItemSortedByName,Collections.reverseOrder());//Reverse Array to Desc order
+<<<<<<< HEAD
        // productItemSorted.forEach(e-> System.out.println(e));
+=======
+        // productItemSorted.forEach(e-> System.out.println(e));
+>>>>>>> master
         System.out.println(productItemSortedByName);
         i=0;
         for(WebElement each:page.productItems)
@@ -173,11 +187,19 @@ public class SaucedemoTest extends BaseTest {
 
     @Test(testName = "US 307 - Social media buttons",description = "Verify there are 3 social media buttons are present: twitter, facebook and linkedIn")
     public void test07(){
+<<<<<<< HEAD
          page.login();
          Assert.assertTrue(page.verifyIfWebElementIsDisplayed(page.twitter,"Verify twitter button displayed :"));
          Assert.assertTrue(page.verifyIfWebElementIsDisplayed(page.facebook,"Verify facebook button displayed :"));
          Assert.assertTrue(page.verifyIfWebElementIsDisplayed(page.linkedin,"Verify linkedin button displayed :"));
          page.sleep(1000);
+=======
+        page.login();
+        Assert.assertTrue(page.verifyIfWebElementIsDisplayed(page.twitter,"Verify twitter button displayed :"));
+        Assert.assertTrue(page.verifyIfWebElementIsDisplayed(page.facebook,"Verify facebook button displayed :"));
+        Assert.assertTrue(page.verifyIfWebElementIsDisplayed(page.linkedin,"Verify linkedin button displayed :"));
+        page.sleep(1000);
+>>>>>>> master
     }
 
 }
